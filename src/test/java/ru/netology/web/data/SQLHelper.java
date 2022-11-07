@@ -1,5 +1,6 @@
 package ru.netology.web.data;
 
+import lombok.SneakyThrows;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
 
@@ -28,8 +29,8 @@ public class SQLHelper {
         }
         return null;
     }
-
-    public static void deleteDbData() throws SQLException {
+    @SneakyThrows
+    public static void deleteDbData() {
         var connection = getConn();
         runner.execute(connection, "DELETE FROM auth_codes");
         runner.execute(connection, "DELETE FROM card_transactions");

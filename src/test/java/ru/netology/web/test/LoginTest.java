@@ -5,10 +5,9 @@ import ru.netology.web.data.DataHelper;
 import ru.netology.web.data.SQLHelper;
 import ru.netology.web.page.LoginPage;
 
-import java.sql.SQLException;
-
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
+import static ru.netology.web.data.SQLHelper.deleteDbData;
 
 class LoginTest {
     LoginPage loginPage;
@@ -19,12 +18,8 @@ class LoginTest {
     }
 
     @AfterAll
-    static void deleteDbData() {
-        try {
-            SQLHelper.deleteDbData();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+    static void clear() {
+    deleteDbData();
     }
 
     @Test
